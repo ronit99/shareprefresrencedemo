@@ -55,11 +55,15 @@ class _RegisterState extends State<Register> {
     super.initState();
     print('init state is called');
     getCredential();
+
   }
   @override
   Widget build(BuildContext context)
   {
-    return Scaffold(
+    final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+    return Scaffold (
+      key: _scaffoldKey,
       body : Container(
         padding: EdgeInsets.all(20),
         child: ListView(
@@ -119,6 +123,7 @@ class _RegisterState extends State<Register> {
               splashColor: Colors.blueAccent,
               onPressed: ()
               {
+
                 if (emailcontroller.text.length>0 && passcontroller.text.length>0)
                   {
                     checkvalue = true;
@@ -129,6 +134,17 @@ class _RegisterState extends State<Register> {
                     checkvalue = false;
                     print('something is missing');
                   }
+                // _scaffoldKey.currentState.showSnackBar(
+                //     SnackBar(
+                //       content: Text("No connection"),
+                //       action: SnackBarAction(
+                //         label: 'Retry', // or some operation you would like
+                //         onPressed: () {
+                //           // this block runs when label is pressed
+                //         },
+                //       ),
+                //     )
+                // );
 
               },
               child: Text(
@@ -140,6 +156,7 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
+
   }
 
 // void showModelBottomSheet({BuildContext context, Container Function(BuildContext context) builder}) {}
